@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; frame-src http: https:;">
+<title>量化交易客户端</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ================= 侧栏 ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="../build/icon.png" alt="" class="brand-logo">
+      <div class="brand-text">
+        <div class="brand-title">量化交易</div>
+        <div class="brand-sub">UNIFIED CLIENT</div>
+      </div>
+    </div>
+
+    <div class="side-label">交易系统</div>
+    <nav id="sysList" class="sys-list"></nav>
+
+    <div class="side-label">支撑服务</div>
+    <div id="extraList" class="extra-list"></div>
+
+    <div class="sidebar-foot">
+      <button id="btnStartAll" class="btn btn-primary btn-block">
+        <span class="i">▶</span> 全部启动
+      </button>
+      <button id="btnSettings" class="btn btn-ghost btn-block">
+        <span class="i">⚙</span> 设置
+      </button>
+      <div id="rootHint" class="root-hint"></div>
+    </div>
+  </aside>
+
+  <!-- ================= 主区 ================= -->
+  <main class="main">
+    <header class="toolbar">
+      <div class="tb-left">
+        <span id="curName" class="cur-name">—</span>
+        <span class="led" id="curLed"></span>
+        <span id="curUrl" class="cur-url"></span>
+      </div>
+      <div class="tb-right">
+        <span id="clock" class="clock"></span>
+        <button id="btnReload" class="btn btn-icon" title="刷新 (F5)">↻</button>
+        <button id="btnExternal" class="btn btn-icon" title="在浏览器中打开">↗</button>
+      </div>
+    </header>
+
+    <div id="stage" class="stage">
+      <!-- webview 由 JS 注入 -->
+    </div>
+  </main>
+</div>
+
+<!-- ================= 设置弹窗 ================= -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-title">设置</div>
+
+    <div class="field">
+      <label>服务代码目录</label>
+      <div id="rootPath" class="path">—</div>
+      <div class="hint">客户端本身不含业务代码，需要指向包含 binance-quant、htf、ai_engines 的 deliverables 目录。</div>
+      <button id="btnChooseRoot" class="btn btn-primary">选择目录…</button>
+    </div>
+
+    <div class="field">
+      <label>版本</label>
+      <div id="verText" class="path">—</div>
+    </div>
+
+    <div class="modal-foot">
+      <button id="btnCloseModal" class="btn btn-ghost">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
