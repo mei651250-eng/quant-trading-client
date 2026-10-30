@@ -34,7 +34,7 @@ jobs:
           ELECTRON_MIRROR: https://npmmirror.com/mirrors/electron/
 
       - name: Build installer & portable
-        run: npm run dist
+        run: npm run dist || npm run dist:local
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ELECTRON_BUILDER_BINARIES_MIRROR: https://npmmirror.com/mirrors/electron-builder-binaries/
